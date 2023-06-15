@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <link href="styles1.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Play Rock, Paper, Scissors! </h1>
+        <h2 class = "bold">Enter your selection(Rock, Paper, Scissors) </h2>
+        <h3></h3>
+        <input type = "text"><button>Enter</button>
+    </body>
+
+    <script>
+        let headingElm = document.querySelector("h3");
+        function getComputerChoice() {
+            const array = ['rock', 'paper', 'scissors']; 
+            const randomIndex = Math.floor(Math.random() * 3); 
+            return array[randomIndex]; 
+        }
+        let inputElm = document.querySelector("input");
+
+        function getUserInput() {
+            if (inputElm.value.toLowerCase() != "rock" && inputElm.value.toLowerCase() != "paper" && inputElm.value.toLowerCase() != "scissors" ) {
+                alert("Please enter a valid input: Either rock, paper, or scissors");
+            }
+            else {
+                return inputElm.value; 
+            }
+            
+            
+
+        }
+        function playRound() {
+             
+            const playerSelection = getUserInput(); 
+            const ComputerSelection = getComputerChoice(); 
+            console.log(playerSelection);
+            console.log(ComputerSelection);
+            if (playerSelection.toLowerCase() == "rock") {
+                if (ComputerSelection == "paper") {
+                    headingElm.textContent ="You lost!";
+                }
+                else if (ComputerSelection == "rock") {
+                    headingElm.textContent = "Tied!";
+                }
+                else {
+                    headingElm.textContent ="You win!"; 
+                }
+            }
+            if (playerSelection.toLowerCase() == "paper") {
+                if (ComputerSelection == "scissors") {
+                    headingElm.textContent ="You lost!";
+                }
+                else if (ComputerSelection == "paper") {
+                    headingElm.textContent ="Tied!";
+                }
+                else {
+                    headingElm.textContent ="You win!"; 
+                }
+            }
+            if (playerSelection.toLowerCase() == "scissors") {
+                if (ComputerSelection == "rock") {
+                    headingElm.textContent ="You lost!";
+                }
+                else if (ComputerSelection == "scissors") {
+                    headingElm.textContent ="Tied!";
+                }
+                else {
+                    headingElm.textContent ="You win!"; 
+                }
+            }
+           
+            
+
+        }
+        let buttonElm = document.querySelector("button");
+        buttonElm.addEventListener("click", playRound);
+        inputElm.addEventListener("keyup", function(event) {
+            if (event.key == "Enter") {
+                playRound(); 
+            }
+        });
+        
+        //let buttonElm = document.querySelector("button"); 
+           // buttonElm.addEventListener("click", getComputerChoice); 
+
+            //inputElm.addEventListener("keyup", function(event) {
+                //If the user pressed "enter"
+              //  if (event.key == "Enter") {
+                //    const computerselection = getComputerChoice();
+                  //  const playerselection = getUserInput(); 
+                    //console.log(computerselection); 
+                    //console.log(playerselection); 
+                //}
+            //}); 
+        
+    </script>
+
+
+</html>
